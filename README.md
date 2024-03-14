@@ -54,19 +54,18 @@ Para executar o Cats Blog em seu ambiente local, siga estas etapas:
 
     bash```
     cd cats_blog
-    ```
+    
 3. Crie e ative o ambiente virtual:
    bash```
-    python3 -m venv .venv
-    ```
+
 
    bash```
     souce .venv/bin/activate
-    ```
+   
 4. Instale as dependências:
    bash```
     pip install -r requirements.txt
-    ```
+   
 
 
 
