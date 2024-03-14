@@ -54,7 +54,7 @@ Para executar o Cats Blog em seu ambiente local, siga estas etapas:
 
     ```
     cd cats_blog
-    ``
+    ```
 
 3. Crie e ative o ambiente virtual:
 
@@ -68,3 +68,47 @@ Para executar o Cats Blog em seu ambiente local, siga estas etapas:
     pip install -r requirements.txt
     ```
 
+## Instalando o mysql-server e mysql-client
+
+1. Atulize seus pacotes e instale o mysql-server e mysql-client:
+   
+    ```
+    sudo apt update
+    ```
+    ```
+    sudo apt upgrade
+    ```
+    ```
+    sudo apt install mysql-server mysql-client
+    ```
+
+2. Verifique se o mysql está ativado:
+
+    ```
+    sudo systemctl status mysql
+    ```
+
+3. Coloque uma senha:
+
+    ```
+    sudo mysql -r root -p
+    ```
+    ```
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456';
+    ```
+
+4. Instale o mysql-workbench - recomendo ir no próprio site e baixar o pacote .deb da sua versão de linux
+ 
+    ```
+    sudo dpkg -i <seu-pacote-do-mysql.deb>
+    ```
+    ou
+    ```
+    sudo apt install mysql-workbench
+    ```
+5. Abra o mysql-workbench, crie um conexão com nome qualquer, dentro dela crie um schema chamado cats_blog
+
+6. Por fim, rode a aplicação:  
+    ```
+    flask --app app run --debug
+    ```
