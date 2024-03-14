@@ -36,4 +36,37 @@ Aqui estão os requisitos detalhados para o Cats Blog:
 
 ## Instalação e Uso
 
+Para executar o Cats Blog em seu ambiente local, siga estas etapas:
+
+1. Clone este repositório em sua máquina local:
+
+    ```
+    git clone git@github.com:pauloh-alc/cats_blog.git
+    ```
+
+    ou
+
+    ```
+    git clone https://github.com/pauloh-alc/cats_blog.git
+    ```
+
+2. Acesse a pasta do projeto:
+
+    bash```
+    cd cats_blog
+    ```
+3. Crie e ative o ambiente virtual:
+   bash```
+    python3 -m venv .venv
+    ```
+
+   bash```
+    souce .venv/bin/activate
+    ```
+4. Instale as dependências:
+   bash```
+    pip install -r requirements.txt
+    ```
+
+
 
