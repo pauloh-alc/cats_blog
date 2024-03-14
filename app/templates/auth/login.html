@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Log In{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div> 
+      {{ form.user_name.label }}
+      {{ form.user_name }}
+    </div>
+    <div>    
+      {{ form.password.label }}
+        <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" id="olho" class="olho">
+      {{ form.password }}
+    </div>
+    <div>
+      <input type="submit" value="Log In">
+    </div>
+  </form>
+{% endblock %}

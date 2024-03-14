@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit "{{ post_name }}"{% endblock %}</h1>
+  <a href="{{ url_for('blog') }}">Posts</a>
+{% endblock %}
+
+{% block content %}
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.title.label }}
+        {{ form.title }}
+    </div>
+    <div>
+        {{ form.body.label }}
+        {{ form.body }}
+    </div>
+    <div>
+        <input type="submit" value="Save">
+    </div>
+  </form>
+
+  <form action="{{ url_for('post_delete', post_id=post_id) }}" method="POST">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}

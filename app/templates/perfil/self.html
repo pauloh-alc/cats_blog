@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Perfil: {{ current_user.user_name }}{% endblock %}</h1>
+  <a href="{{ url_for('blog') }}">Posts</a>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <p>Cat name: {{ current_user.cat_name }}</p>
+        <p>Cat sex: {{ 'Male'  if current_user.cat_sex == 'M' else 'Female' }}</p>
+        <a href="{{ url_for('user_update', user_id=current_user.id) }}">Edit Perfil</a>
+        <form action="{{ url_for('user_delete', user_id=current_user.id) }}" method="POST">
+          <input class="danger" type="submit" value="Delete Account" onclick="return confirm('Are you sure?');">
+        </form>
+    </div>
+{% endblock %}

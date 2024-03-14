@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <header>
+    <title>{% block title %}{% endblock %}Cats Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </header>
+  <body>
+    <nav>
+      <h1>Cats-Blog</h1>
+      <ul>
+        {% if not current_user.is_anonymous %}
+          <li><a href="{{ url_for('self') }}">{{ current_user.user_name }}</a>
+          <li><a href="{{ url_for('logout') }}">Log Out</a>
+        {% else %}
+          <li><a href="{{ url_for('register') }}">Register</a>
+          <li><a href="{{ url_for('login') }}">Log In</a>
+        {% endif %}
+      </ul>
+    </nav>
+    <section class="content">
+      <header>
+        {% block header %}{% endblock %}
+      </header>
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+      {% block content %}{% endblock %}
+    </section>
+  </body>
+</html>

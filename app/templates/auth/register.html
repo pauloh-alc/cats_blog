@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Register User{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.user_name.label }}
+            {{ form.user_name }}
+        </div>
+        <div>
+            <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" id="olho" class="olho">
+            {{ form.password.label }}
+            {{ form.password }}
+        </div>
+        <div>
+            {{ form.cat_name.label }}
+            {{ form.cat_name }}
+        </div>
+        <div>
+            {{ form.cat_sex.label }}
+            {% for subfield in form.cat_sex %}
+                {{ subfield }} {{ subfield.label }}
+            {% endfor %}
+        </div>
+        <div>
+            <input type="submit" value="Register">
+        </div>
+    </form>
+{% endblock %}
