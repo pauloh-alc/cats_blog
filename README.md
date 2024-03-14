@@ -52,20 +52,19 @@ Para executar o Cats Blog em seu ambiente local, siga estas etapas:
 
 2. Acesse a pasta do projeto:
 
-    bash```
-    cd cats_blog
-    
+```sh
+cd cats_blog
+``
+
 3. Crie e ative o ambiente virtual:
-   bash```
 
+```sh
+souce .venv/bin/activate
+```
 
-   bash```
-    souce .venv/bin/activate
-   
 4. Instale as dependências:
-   bash```
-    pip install -r requirements.txt
-   
 
-
+```sh
+pip install -r requirements.txt
+```
 
