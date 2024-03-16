@@ -14,10 +14,8 @@ app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+mysqlconnector://{os.getenv('DB_
 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
-# create the database
 db = SQLAlchemy(app)
 
-# starting the login
 login_manager = LoginManager(app)
 
 from app import models
@@ -32,4 +30,4 @@ except ProgrammingError:
 from app import routes
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run()

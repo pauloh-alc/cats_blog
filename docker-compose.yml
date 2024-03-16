@@ -1,0 +1,33 @@
+version: '3'
+
+networks:
+  web_network:
+    driver: bridge
+
+services:
+  mysql_db:
+    image: mysql:latest
+    container_name: "container_mysql_db"
+    restart: always 
+    ports: 
+      - "3306:3306"
+    environment:
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+    networks:
+      - web_network
+
+  flask_cats_blog:
+    build: .
+    container_name: "container_flask_cats_blog"
+    restart: always 
+    depends_on:
+      - mysql_db
+    ports:
+      - "5000:5000"
+    networks:
+      - web_network
+    env_file:
+      - .env
