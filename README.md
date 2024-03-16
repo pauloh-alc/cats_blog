@@ -29,12 +29,11 @@ Aqui estão os requisitos bem gerais para o Cats Blog:
 
 
 ## DER – diagrama de entidade e relacionamento:
-    - Modelo bem simplificado somente para fazer a aplicação. Podemos modelar de uma forma mais complexa. Um Post pode ser composta de uma entidade Imagem, Categoria... o User pode ser granularizado e criarmos uma entidade Gato e uma entidade Pessoa...
+Modelo bem simplificado somente para fazer a aplicação. Podemos modelar de uma forma mais complexa. Um Post pode ser composta de uma entidade Imagem, Categoria... o User pode ser granularizado e criarmos uma entidade Gato e uma entidade Pessoa...
   
-## Modelo Físico simplificado:
 ![Screenshot](img/der.png)
 
-## No banco
+## Modelo Físico simplificado:
 ![Screenshot](img/relacionamento-banco.png)
 
 ## Instalação e Uso (COM DOCKER e DOCKER COMPOSE)
