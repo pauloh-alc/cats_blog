@@ -7,7 +7,7 @@ Este é um projeto de desenvolvimento de um blog para compartilhamento de posts 
 
 ## Requisitos de forma resumida
 
-Aqui estão os requisitos detalhados para o Cats Blog:
+Aqui estão os requisitos bem gerais para o Cats Blog:
 
 1. **Registro de Usuário:**
    - Os usuários devem ser capazes de se registrar fornecendo as seguintes informações: username, password, nome do gato e sexo do gato.
@@ -28,13 +28,45 @@ Aqui estão os requisitos detalhados para o Cats Blog:
    - Usuários logados devem poder criar, editar ou excluir posts. Eles só devem ser capazes de editar ou excluir os posts que eles mesmos criaram.
 
 
-## DER – diagrama de entidade e relacionamento
+## DER – diagrama de entidade e relacionamento:
+    - Modelo bem simplificado somente para fazer a aplicação. Podemos modelar de uma forma mais complexa. Um Post pode ser composta de uma entidade Imagem, Categoria... o User pode ser granularizado e criarmos uma entidade Gato e uma entidade Pessoa...
+  
+## Modelo Físico simplificado:
 ![Screenshot](img/der.png)
 
 ## No banco
 ![Screenshot](img/relacionamento-banco.png)
 
-## Instalação e Uso
+## Instalação e Uso (COM DOCKER e DOCKER COMPOSE)
+
+1. Clone este repositório em sua máquina local:
+
+    ```
+    git clone git@github.com:pauloh-alc/cats_blog.git
+    ```
+
+    ou
+
+    ```
+    git clone https://github.com/pauloh-alc/cats_blog.git
+    ```
+
+2. Acesse a pasta do projeto:
+
+    ```
+    cd cats_blog
+    ```
+
+3. Construa seus containers e suba eles:
+
+    ```
+    sudo docker-compose up --build
+    ```
+
+4. Acesse localhost:5000 em seu navegador:
+
+
+## Instalação e Uso (SEM DOCKER)
 
 Para executar o Cats Blog em seu ambiente local, siga estas etapas:
 
@@ -57,7 +89,9 @@ Para executar o Cats Blog em seu ambiente local, siga estas etapas:
     ```
 
 3. Crie e ative o ambiente virtual:
-
+    ```
+    python3 -m venv .venv
+    ```
     ```
     souce .venv/bin/activate
     ```
@@ -70,7 +104,7 @@ Para executar o Cats Blog em seu ambiente local, siga estas etapas:
 
 ## Instalando o mysql-server e mysql-client
 
-1. Atulize seus pacotes e instale o mysql-server e mysql-client:
+1. Atualize seus pacotes e instale o mysql-server e mysql-client:
    
     ```
     sudo apt update
