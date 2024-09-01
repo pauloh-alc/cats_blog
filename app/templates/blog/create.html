@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-  <form method="POST">
+  <form method="POST" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     <div>
         {{ form.title.label }}
@@ -15,8 +15,17 @@
         {{ form.body.label }}
         {{ form.body }}
     </div>
+      <div>
+        {{ form.image.label }}
+        {{ form.image }}
+      </div>
     <div>
         <input type="submit" value="Save">
     </div>
+      {% if form.image.errors %}
+        <div>
+            {{ form.image.errors[0] }}
+        </div>
+      {% endif %}
   </form>
 {% endblock %}

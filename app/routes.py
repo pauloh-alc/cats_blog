@@ -1,13 +1,17 @@
+import os
+from http import HTTPStatus
+
 from flask import abort, render_template, url_for, redirect, request, flash, session
 from flask_login import login_user, logout_user, current_user, login_required, LoginManager
-from app import app, db
-from app.models import User, Post
-from app.forms import LoginForm, RegisterForm, PostForm, UpdateUserForm
 from sqlalchemy import exc
 from werkzeug.security import check_password_hash, generate_password_hash
-from http import HTTPStatus
-from app.functions import get_posts, get_post
+from werkzeug.utils import secure_filename
 
+from app import app, db
+from app.factory import PostFactory
+from app.forms import LoginForm, RegisterForm, PostForm, UpdateUserForm
+from app.functions import get_posts
+from app.models import User, Post
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -114,16 +118,23 @@ def user_delete(user_id):
 def create():
     form = PostForm()
 
-    form_title = form.title.data
-    form_body = form.body.data
-    path_image='caminho/teste'
+    if form.validate_on_submit():
+        form_title = form.title.data
+        form_body = form.body.data
+        form_image = form.image.data
+        path_image = ''
 
-    if request.method == 'POST':
-        post = Post(title=form_title, body=form_body, path_image=path_image, author_id=current_user.id)
-        db.session.add(post)
-        db.session.commit()
-        posts = get_posts()   
-        return redirect(url_for('blog', posts=posts))
+        if form_image and form_image.filename:
+            filename = secure_filename(form_image.filename)
+            path_image = os.path.join('static/uploads', filename)
+            form_image.save(os.path.join(app.root_path, path_image))
+
+        if request.method == 'POST':
+            post = PostFactory.create_post(title=form_title, body=form_body, path_image=path_image, author_id=current_user.id)
+            db.session.add(post)
+            db.session.commit()
+            posts = get_posts()
+            return redirect(url_for('blog', posts=posts))
 
     return render_template('/blog/create.html', form=form)
 
@@ -140,7 +151,6 @@ def post_update(post_id):
 
     post.title = form.title.data
     post.body = form.body.data
-    post.path_image = 'caminho'
 
     if request.method == 'POST':
         db.session.commit()

@@ -145,3 +145,11 @@ input[type=submit] {
     align-self: start;
     min-width: 10em;
 }
+
+.post-image {
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+  max-height: 100px;
+  object-fit: cover;
+}

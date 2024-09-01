@@ -1,6 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, RadioField, SubmitField, TextAreaField
+from flask_wtf.file import FileAllowed
+from wtforms import StringField, PasswordField, RadioField, SubmitField, TextAreaField, FileField
 from wtforms.validators import DataRequired, Length
+
 
 class LoginForm(FlaskForm):
     user_name = StringField('Username*', validators=[DataRequired()])
@@ -26,4 +28,5 @@ class UpdateUserForm(FlaskForm):
 class PostForm(FlaskForm):
     title = StringField('Title*', validators=[DataRequired()])
     body = TextAreaField('Body*', validators=[DataRequired()])
-    path_image = StringField('path')
+    image = FileField('Image', validators=[FileAllowed(['jpg', 'png', 'jpeg'], 'Somente imagens, nos formatos (png, jpg ou jpeg)!')])
+    path_image = StringField('Path')
